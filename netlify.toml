@@ -19,13 +19,12 @@
 [[redirects]]
   from   = "/*"
   to     = "https://setupprints.onrender.com/:splat"
-  status = 200          # 200 = proxy (no Location header, URL stays masked)
-  force  = true         # override any matching local file
+  status = 200
+  force  = true
 
-  # Strip headers that could expose the real origin to the client
-  [redirects.headers]
-    X-Robots-Tag        = "noindex, nofollow, noarchive, nosnippet"
-    X-Frame-Options     = "SAMEORIGIN"
-    X-Content-Type-Options = "nosniff"
-    Referrer-Policy     = "no-referrer"
-    Cache-Control       = "no-store, no-cache, must-revalidate"
+[redirects.headers]
+  X-Robots-Tag = "noindex, nofollow, noarchive, nosnippet, noimageindex"
+  Referrer-Policy = "no-referrer"
+  X-Frame-Options = "SAMEORIGIN"
+  X-Content-Type-Options = "nosniff"
+  Cache-Control = "no-store, no-cache, must-revalidate"
