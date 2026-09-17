@@ -1,35 +1,7 @@
 /*
-  # ── Crawler & indexing control ─────────────────────────────────────────────
   X-Robots-Tag: noindex, nofollow, noarchive, nosnippet, noimageindex
-
-  # ── Hide real origin / referrer ────────────────────────────────────────────
-  # Tells the browser to never send a Referer header, so the proxy destination
-  # is not leaked to analytics or third-party scripts on the proxied site.
   Referrer-Policy: no-referrer
-
-  # ── Prevent caching (so proxied content is never stored with origin info) ──
-  Cache-Control: no-store, no-cache, must-revalidate, proxy-revalidate
-  Pragma: no-cache
-  Expires: 0
-
-  # ── Security headers (encryption / transport) ──────────────────────────────
-  # Force HTTPS for 1 year — prevents any plain-text downgrade that could
-  # expose the real backend host.
-  Strict-Transport-Security: max-age=31536000; includeSubDomains; preload
-
-  # ── Clickjacking & injection protection ────────────────────────────────────
   X-Frame-Options: SAMEORIGIN
   X-Content-Type-Options: nosniff
-  X-XSS-Protection: 1; mode=block
-
-  # ── Permissions policy — lock down sensitive APIs ──────────────────────────
-  Permissions-Policy: geolocation=(), microphone=(), camera=(), payment=()
-
-  # ── Content Security Policy ────────────────────────────────────────────────
-  # Only allow resources from this same origin (the masked Netlify domain).
-  # Blocks the browser from making any direct request to the real Render URL.
-  Content-Security-Policy: default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; connect-src 'self'; frame-ancestors 'none'
-
-  # ── Remove headers that expose infrastructure ──────────────────────────────
-  # Netlify adds Server: netlify — remove any upstream server hint.
-  Server: hidden
+  Strict-Transport-Security: max-age=31536000; includeSubDomains; preload
+  Cache-Control: no-store, no-cache, must-revalidate
