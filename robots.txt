@@ -1,0 +1,38 @@
+# Block all crawlers from every path on this domain.
+# This site is a masked proxy — there is no content here to index.
+
+# Google
+User-agent: Googlebot
+Disallow: /
+
+# Google Image crawler
+User-agent: Googlebot-Image
+Disallow: /
+
+# Google AdsBot
+User-agent: AdsBot-Google
+Disallow: /
+
+# Bing
+User-agent: Bingbot
+Disallow: /
+
+# Yahoo
+User-agent: Slurp
+Disallow: /
+
+# DuckDuckGo
+User-agent: DuckDuckBot
+Disallow: /
+
+# Baidu
+User-agent: Baiduspider
+Disallow: /
+
+# Yandex
+User-agent: YandexBot
+Disallow: /
+
+# All other bots
+User-agent: *
+Disallow: /

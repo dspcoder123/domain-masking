@@ -1,0 +1,21 @@
+[build]
+  publish = "."
+
+# ─── Server-side proxy rewrite ───────────────────────────────────────────────
+# Every request to this Netlify site is silently forwarded to the real origin.
+# The browser and search-engine crawlers only ever see the Netlify domain;
+# the real Render URL is kept server-side and never appears in responses.
+
+[[redirects]]
+  from   = "/*"
+  to     = "https://setupprints.onrender.com/:splat"
+  status = 200          # 200 = proxy (no Location header, URL stays masked)
+  force  = true         # override any matching local file
+
+  # Strip headers that could expose the real origin to the client
+  [redirects.headers]
+    X-Robots-Tag        = "noindex, nofollow, noarchive, nosnippet"
+    X-Frame-Options     = "SAMEORIGIN"
+    X-Content-Type-Options = "nosniff"
+    Referrer-Policy     = "no-referrer"
+    Cache-Control       = "no-store, no-cache, must-revalidate"
