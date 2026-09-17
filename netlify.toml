@@ -1,6 +1,16 @@
 [build]
   publish = "."
 
+# ─── Exception: serve local files before proxy catches them ──────────────────
+# Google Search Console verification file must be served directly.
+# Netlify processes redirects top-to-bottom — this rule runs first.
+
+[[redirects]]
+  from   = "/google6fa6039637cf1866.html"
+  to     = "/google6fa6039637cf1866.html"
+  status = 200
+  force  = false
+
 # ─── Server-side proxy rewrite ───────────────────────────────────────────────
 # Every request to this Netlify site is silently forwarded to the real origin.
 # The browser and search-engine crawlers only ever see the Netlify domain;
